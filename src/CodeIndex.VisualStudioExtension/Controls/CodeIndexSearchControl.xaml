@@ -3,8 +3,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vsshell="clr-namespace:Microsoft.VisualStudio.Shell;assembly=Microsoft.VisualStudio.Shell.15.0"
              mc:Ignorable="d" 
-             d:DesignHeight="281.2" d:DesignWidth="987.2" Foreground="Black" Background="#FF2D2D30">
+             d:DesignHeight="281.2" d:DesignWidth="987.2" Foreground="Black" Background="{DynamicResource {x:Static vsshell:VsBrushes.ToolWindowBackgroundKey}}">
     <UserControl.Resources>
         <ResourceDictionary Source="../Resources/ExtensionResourceDictionary.xaml" />
     </UserControl.Resources>
@@ -12,26 +13,26 @@
         <DockPanel LastChildFill="True" Margin="6">
             <WrapPanel HorizontalAlignment="Left" DockPanel.Dock="Top">
                 <DockPanel Style="{StaticResource PanelForWrapPanel}">
-                    <Label Content="Content:"/>
-                    <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Content, UpdateSourceTrigger=PropertyChanged}" Width="240" KeyUp="ContentTextBox_KeyUp" MaxLength="1000" />
+                    <Label Content="Content:" Style="{DynamicResource {x:Static vsshell:VsResourceKeys.ThemedDialogLabelStyleKey}}" />
+                    <TextBox Height="23" TextWrapping="Wrap" Text="{Binding Content, UpdateSourceTrigger=PropertyChanged}" Width="240" KeyUp="ContentTextBox_KeyUp" MaxLength="1000" Style="{DynamicResource {x:Static vsshell:VsResourceKeys.TextBoxStyleKey}}" />
                 </DockPanel>
                 <CheckBox Content=":Case Sensitive" Style="{StaticResource CommonCheckBox}" IsChecked="{Binding CaseSensitive}"/>
-                <CheckBox Content=":Phase Query"  Style="{StaticResource CommonCheckBox}" IsChecked="{Binding PhaseQuery}"/>
+                <CheckBox Content=":Phase Query" Style="{StaticResource CommonCheckBox}" IsChecked="{Binding PhaseQuery}"/>
                 <DockPanel Style="{StaticResource PanelForWrapPanel}">
-                    <Label Content="File Name:" />
-                    <TextBox Height="23" TextWrapping="Wrap" Text="{Binding FileName, UpdateSourceTrigger=PropertyChanged}" Width="120" KeyDown="TextBox_KeyDown" MaxLength="200" />
+                    <Label Content="File Name:" Style="{DynamicResource {x:Static vsshell:VsResourceKeys.ThemedDialogLabelStyleKey}}" />
+                    <TextBox Height="23" TextWrapping="Wrap" Text="{Binding FileName, UpdateSourceTrigger=PropertyChanged}" Width="120" KeyDown="TextBox_KeyDown" MaxLength="200"  Style="{DynamicResource {x:Static vsshell:VsResourceKeys.TextBoxStyleKey}}" />
                 </DockPanel>
                 <DockPanel Style="{StaticResource PanelForWrapPanel}">
-                    <Label Content="File Extension:" />
-                    <TextBox Height="23" TextWrapping="Wrap" Text="{Binding FileExtension, UpdateSourceTrigger=PropertyChanged}" Width="120" KeyDown="TextBox_KeyDown" MaxLength="21" />
+                    <Label Content="File Extension:" Style="{DynamicResource {x:Static vsshell:VsResourceKeys.ThemedDialogLabelStyleKey}}" />
+                        <TextBox Height="23" TextWrapping="Wrap" Text="{Binding FileExtension, UpdateSourceTrigger=PropertyChanged}" Width="120" KeyDown="TextBox_KeyDown" MaxLength="21" Style="{DynamicResource {x:Static vsshell:VsResourceKeys.TextBoxStyleKey}}" />
                 </DockPanel>
                 <DockPanel Style="{StaticResource PanelForWrapPanel}">
-                    <Label Content="File Location:" />
-                    <TextBox Height="23" TextWrapping="Wrap" Text="{Binding FileLocation, UpdateSourceTrigger=PropertyChanged}" Width="120" KeyDown="TextBox_KeyDown" MaxLength="1000" />
+                    <Label Content="File Location:" Style="{DynamicResource {x:Static vsshell:VsResourceKeys.ThemedDialogLabelStyleKey}}" />
+                            <TextBox Height="23" TextWrapping="Wrap" Text="{Binding FileLocation, UpdateSourceTrigger=PropertyChanged}" Width="120" KeyDown="TextBox_KeyDown" MaxLength="1000" Style="{DynamicResource {x:Static vsshell:VsResourceKeys.TextBoxStyleKey}}" />
                 </DockPanel>
                 <DockPanel Style="{StaticResource PanelForWrapPanel}">
-                    <Label Content="Show Results:" />
-                    <ComboBox SelectedValue="{Binding ShowResultsNumber}" ItemsSource="{Binding Options}" DisplayMemberPath="Name" SelectedValuePath="Value" Width="100" VerticalAlignment="Center" />
+                    <Label Content="Show Results:" Style="{DynamicResource {x:Static vsshell:VsResourceKeys.ThemedDialogLabelStyleKey}}" />
+                    <ComboBox Style="{DynamicResource {x:Static vsshell:VsResourceKeys.ComboBoxStyleKey}}" SelectedValue="{Binding ShowResultsNumber}" ItemsSource="{Binding Options}" DisplayMemberPath="Name" SelectedValuePath="Value" Width="100" VerticalAlignment="Center" />
                 </DockPanel>
                 <DockPanel Style="{StaticResource PanelForWrapPanel}">
                     <Button x:Name="SearchButton" Margin="10 2 0 2" Content="Search" Command="{Binding SearchIndexCommand}" Style="{StaticResource InfoButton}" />
@@ -48,29 +49,29 @@
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Label Content="Service Url:" Grid.Column="0" Style="{StaticResource CommonLabel}" VerticalAlignment="Center" />
-                <TextBox Height="23" Style="{StaticResource CommonTextBox}" Grid.Column="1" TextWrapping="NoWrap" Text="{Binding ServiceUrl}" Width="200" />
-                <Label Content="Index:" Style="{StaticResource CommonLabel}" Grid.Column="2" VerticalAlignment="Center" />
-                <ComboBox SelectedValue="{Binding IndexPk}" Grid.Column="3" ItemsSource="{Binding IndexInfos}" DisplayMemberPath="Name" SelectedValuePath="Value" Width="200" VerticalAlignment="Center" />
+                <Label Content="Service Url:" Grid.Column="0" Style="{DynamicResource {x:Static vsshell:VsResourceKeys.ThemedDialogLabelStyleKey}}" VerticalAlignment="Center" />
+                <TextBox Height="23" Grid.Column="1" TextWrapping="NoWrap" Text="{Binding ServiceUrl}" Width="200" Style="{DynamicResource {x:Static vsshell:VsResourceKeys.TextBoxStyleKey}}" />
+                <Label Content="Index:" Style="{DynamicResource {x:Static vsshell:VsResourceKeys.ThemedDialogLabelStyleKey}}" Grid.Column="2" VerticalAlignment="Center" />
+                <ComboBox Style="{DynamicResource {x:Static vsshell:VsResourceKeys.ComboBoxStyleKey}}" SelectedValue="{Binding IndexPk}" Grid.Column="3" ItemsSource="{Binding IndexInfos}" DisplayMemberPath="Name" SelectedValuePath="Value" Width="200" VerticalAlignment="Center" />
                 <Button x:Name="RefreshButton" Grid.Column="4" Margin="10 2 0 2" Content="Refresh Index" Command="{Binding RefreshIndexCommand}" Style="{StaticResource InfoButton}" Height="26" Width="82" />
-                <Label Content="Result Info:" Style="{StaticResource CommonLabel}" VerticalAlignment="Center" Grid.Column="5" />
+                <Label Content="Result Info:" Style="{DynamicResource {x:Static vsshell:VsResourceKeys.ThemedDialogLabelStyleKey}}" VerticalAlignment="Center" Grid.Column="5" />
                 <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" MaxHeight="100" Grid.Column="6">
-                    <Label Content="{Binding ResultInfo}" Foreground="Yellow" Style="{StaticResource CommonLabel}"/>
+                    <Label Content="{Binding ResultInfo}" Foreground="{DynamicResource {x:Static vsshell:VsBrushes.EditorExpansionLinkKey}}" Style="{DynamicResource {x:Static vsshell:VsResourceKeys.ThemedDialogLabelStyleKey}}" />
                 </ScrollViewer>
             </Grid>
             <DockPanel DockPanel.Dock="Top">
-                <Label Content="Hind Words:" Style="{StaticResource CommonLabel}" DockPanel.Dock="Left" />
+                <Label Content="Hint Words:" Style="{DynamicResource {x:Static vsshell:VsResourceKeys.ThemedDialogLabelStyleKey}}" DockPanel.Dock="Left" />
                 <ScrollViewer DockPanel.Dock="Right" VerticalScrollBarVisibility="Auto" MaxHeight="60">
                     <ItemsControl ItemsSource="{Binding HintWords}" ItemsPanel="{StaticResource ItemsPanelTemplateHorizontal}" HorizontalAlignment="Left">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <Label Style="{StaticResource CommonLabel}" Content="{Binding Word}"  Foreground="Yellow" />
+                                <Label Style="{DynamicResource {x:Static vsshell:VsResourceKeys.ThemedDialogLabelStyleKey}}" Content="{Binding Word}" Foreground="{DynamicResource {x:Static vsshell:VsBrushes.EditorExpansionLinkKey}}" />
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
                 </ScrollViewer>
             </DockPanel>
-            <DataGrid Name="MatchedCodeSourceGrid" Background="#FF2D2D30" Margin="0 6 0 0" ItemsSource="{Binding SearchResults}" IsReadOnly="True" HeadersVisibility="Column" AutoGenerateColumns="False">
+            <DataGrid Name="MatchedCodeSourceGrid" Margin="0 6 0 0" ItemsSource="{Binding SearchResults}" IsReadOnly="True" HeadersVisibility="Column" AutoGenerateColumns="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Name" Width="3*" Binding="{Binding CodeSource.FileName}" />
                     <DataGridTextColumn Header="Extension" Width="1*" Binding="{Binding CodeSource.FileExtension}" />
